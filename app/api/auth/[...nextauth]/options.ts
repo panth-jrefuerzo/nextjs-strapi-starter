@@ -23,13 +23,13 @@ export const options: NextAuthOptions = {
         const isSignIn = user ? true : false;
         if (isSignIn && account) {
             try {
-                console.log("Google Account >>>>>>>>>>>>>> ", account);
+                console.log("Google Signing -> Strapi ", account);
                 const public_url = process.env.STRAPI_PUBLIC_API_URL;
                 const response = await fetch(
                     `${public_url}/api/auth/${account.provider}/callback?access_token=${account?.access_token}`
                 );
                 const data = await response.json();
-                console.log("Strapi Callback Data >>>>>>>>>>>>>> ", data);
+                console.log("Strapi Callback Data", data);
                 token.jwt = data.jwt;
                 token.id = data.user.id;
             } catch (error) {
