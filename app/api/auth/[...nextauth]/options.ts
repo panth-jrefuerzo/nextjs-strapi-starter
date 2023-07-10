@@ -45,10 +45,7 @@ export const options: NextAuthOptions = {
           console.log("Strapi Callback Data", data);
           token.jwt = data.jwt;
           token.id = data.user.id;
-          token.blocked = data.user.blocked;
-          token.status = data.user.confirmed;
           token.group = data.user.group;
-          token.banstatus = data.user.banstatus;
 
         } catch (error) {
           console.error("Fetch failed:", error);
