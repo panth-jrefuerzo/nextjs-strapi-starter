@@ -1,25 +1,63 @@
-import Link from "next/link"
+"use client"
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import SignOutButton from '../auth/signout';
 
-export default function Navbar() {
-    return (
-        <nav className="bg-white p-4">
-            <div className="container mx-auto">
-                <div className="flex justify-between">
-                    <div className="logo text-2xl">
-                        MySite
-                    </div>
-                    <div className="menubar pt-2">
-                        <ul className="flex justify-evenly gap-4">
-                            <li><Link href="/">Home</Link></li>
-                            <li><Link href="/api/auth/signin">Sign In</Link></li>
-                            <li><Link href="/api/auth/signout">Sign Out</Link></li>
-                            <li><Link href="/server">Server</Link></li>
-                            <li><Link href="/client">Client</Link></li>
-                            <li><Link href="/extra">Extra</Link></li>
-                        </ul>
-                    </div>
-                </div>
+const siteName = "Jahz";
+
+
+const MenuItems = () => (
+  <>
+    <NavItem href="/" label="Home" />
+    <NavItem href="/server" label="Server" />
+    <NavItem href="/client" label="Client" />
+    <NavItem href="/auth/login" label="Login" />
+  </>
+);
+
+const NavItem = ({ href, label }:any) => (
+  <Link href={href} passHref className={``}>
+    {label}
+  </Link>
+);
+
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleSidebar = () => setIsOpen(!isOpen);
+
+  return (
+    <nav className={`sticky top-0 transition-all duration-300`}>
+      <div className="navigation">
+        <div className="flex items-center justify-between h-16 px-4 lg:px-auto container mx-auto container">
+          <div className="text-left">
+            <Link href="/" className={`transition-all duration-300 text-2xl font-bold`}>
+              {siteName}
+            </Link>
+          </div>
+          <div className="flex md:hidden">
+            <button type="button" className={`z-40`} onClick={toggleSidebar}>
+              <span className="sr-only">Open sidebar</span>
+              <GiHamburgerMenu className="inline" size={32} />
+            </button>
+          </div>
+          <div className="hidden md:flex items-center">
+            <div className={`ml-10 flex items-baseline space-x-4 gap-8`}>
+              <MenuItems />
+              <SignOutButton />
             </div>
-        </nav>
-    )
-}
+          </div>
+        </div>
+      </div>
+      <div
+        className={`${isOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[-100%]'} md:hidden absolute top-16 inset-x-0 p-2 transform transition-all duration-400 ease-in-out z-10`}
+      >
+        <div className="pt-3 pb-4 px-5 space-y-6 flex flex-col rounded-md bg-zinc-100">
+          <MenuItems />
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
