@@ -1,5 +1,6 @@
 import type { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import DiscordProvider from "next-auth/providers/discord";
 
 export const options: NextAuthOptions = {
   providers: [
@@ -7,38 +8,54 @@ export const options: NextAuthOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
+    DiscordProvider({
+      clientId: process.env.DISCORD_CLIENT_ID as string,
+      clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
+    }),
   ],
 
+  // Custom signin page
+  pages: {
+    signIn: "/auth/login",
+  },
+
   // Integrate to Strapi
-  session: { strategy: "jwt" },
+  session: { 
+    strategy: "jwt",
+    maxAge: 86400 // 24 Hours
+  },
   callbacks: {
     async session({ user, session, token }) {
-        session.user = token as any;
-        /* @ts-ignore */
-        session.user.id = user ? user.id : null;
-        return Promise.resolve(session);
+      session.user = token as any;
+      /* @ts-ignore */
+      session.user.id = user ? user.id : null;
+      return Promise.resolve(session);
     },
-    
-    async jwt({ token, user, account }) {
-        const isSignIn = user ? true : false;
-        if (isSignIn && account) {
-            try {
-                console.log("Google Signing -> Strapi ", account);
-                const public_url = process.env.STRAPI_PUBLIC_API_URL;
-                const response = await fetch(
-                    `${public_url}/api/auth/${account.provider}/callback?access_token=${account?.access_token}`
-                );
-                const data = await response.json();
-                console.log("Strapi Callback Data", data);
-                token.jwt = data.jwt;
-                token.id = data.user.id;
-            } catch (error) {
-                console.error('Fetch failed:', error);
-            }
-        }
-        return Promise.resolve(token);
-    },
-},
-secret: process.env.NEXTAUTH_SECRET as string
 
+    async jwt({ token, user, account }) {
+      const isSignIn = user ? true : false;
+      if (isSignIn && account) {
+        try {
+          console.log("SSO Provider -> Strapi ", account);
+          const public_url = process.env.STRAPI_PUBLIC_API_URL;
+          const response = await fetch(
+            `${public_url}/api/auth/${account.provider}/callback?access_token=${account?.access_token}`
+          );
+          const data = await response.json();
+          console.log("Strapi Callback Data", data);
+          token.jwt = data.jwt;
+          token.id = data.user.id;
+          token.blocked = data.user.blocked;
+          token.status = data.user.confirmed;
+          token.group = data.user.group;
+          token.banstatus = data.user.banstatus;
+
+        } catch (error) {
+          console.error("Fetch failed:", error);
+        }
+      }
+      return Promise.resolve(token);
+    },
+  },
+  secret: process.env.NEXTAUTH_SECRET as string,
 };
