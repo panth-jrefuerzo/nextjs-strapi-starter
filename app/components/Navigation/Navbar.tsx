@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { MdComputer, MdDashboard, MdHomeFilled } from 'react-icons/md';
+import { MdClose, MdComputer, MdDashboard, MdHomeFilled } from 'react-icons/md';
 import { PiUserBold } from 'react-icons/pi';
 
 import ProfileDropDown from './ProfileDropDown';
@@ -87,7 +87,7 @@ const Navbar: React.FC = () => {
           <div className="flex md:hidden absolute right-4 top-6">
             <button type="button" className={`z-40`} onClick={toggleMobileMenu}>
               <span className="sr-only">Open sidebar</span>
-              <GiHamburgerMenu className="inline" size={32} />
+              <MdClose className="inline" size={32} />
             </button>
           </div>
           <div className="border-b-[1px] border-slate-500">
