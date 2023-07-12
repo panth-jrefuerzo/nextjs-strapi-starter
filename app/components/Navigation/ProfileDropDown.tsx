@@ -28,7 +28,7 @@ function ProfileDropDown() {
     w-screen 
     max-w-[260px] 
     sm:right-[1rem] 
-    mt-2
+    mt-[1rem]
    `;
 
     useEffect(() => {

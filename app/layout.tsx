@@ -3,8 +3,7 @@ import { Inter } from 'next/font/google'
 import Navbar from './components/Navigation/Navbar'
 import AuthProvider from './context/AuthProvider'
 
-const inter = Inter({ subsets: ['latin'] })
-const layoutClasses = "dark:bg-zinc-900";
+const layoutClasses = "dark:bg-slate-900";
 
 export const metadata = {
   title: '',
