@@ -7,6 +7,10 @@ function UserNavLink() {
     const userFName = session?.user.name;
     const userPhoto = session?.user.picture;
 
+    if(!session){
+        return null
+    }
+    
   return (
     <div className={`flex px-4 border-b-[1px] border-slate-500 pb-4 mb-4`}>
     <Image

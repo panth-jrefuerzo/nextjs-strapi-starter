@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   const navStyle = `${isMobileMenuOpen ? 'absolute opacity-0 translate-x-[-100%]' : 'sticky top-0'} transition-all duration-300 dark:text-white backdrop-filter backdrop-blur-lg bg-opacity-50 border-b-[1px] border-slate-500 border-opacity-50 py-4 px-4`;
-  const menuStyle = `flex items-baseline space-x-4 gap-4 font-medium text-slate-300 ${isMobileMenuOpen ? '' : ''}`;
+  const menuStyle = `flex items-baseline gap-4 font-medium text-slate-300 ${isMobileMenuOpen ? '' : ''}`;
   const mobileMenuStyle = `${isMobileMenuOpen ? 'opacity-100 translate-x-0 bg-slate-800 w-auto sticky top-0' : 'opacity-0 translate-x-[-100%] '} text-slate-300 font-medium pb-8 left-0 top-0 absolute transform transition-all duration-400 ease-in-out z-0`;
 
   useEffect(() => {
