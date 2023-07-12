@@ -4,6 +4,7 @@ import {PiSignIn, PiUserBold} from 'react-icons/pi';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
+import UserNavLink from './UserNavLink';
 
 
 function ProfileDropDown() {
@@ -64,19 +65,7 @@ function ProfileDropDown() {
                         </span>
                     </button>
                     <div className={`${dropDownStyle} mr-2 px-2 py-4`}>
-                        <div className={`flex px-4 border-b-[1px] border-slate-500 pb-4 mb-4`}>
-                            <Image
-                                className="rounded-full inline transition-all duration-400 ease-in-out mr-3"
-                                src={userPhoto as string}
-                                width={60}
-                                height={60}
-                                alt="Photo"
-                            />
-                            <div className="">
-                                <span className="text-xl block font-semibold">{userFName}</span>
-                                <span className="text-sm block font-semibold">{session.user.email}</span>
-                            </div>
-                        </div>
+                        <UserNavLink />
                         <div className='text-neutral-500 dark:text-neutral-300 px-4 space-y-4'>
                             <div className=''>
                                 <Link className="mr-2" href={`/profiles/${userFName}`}>

@@ -5,34 +5,44 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdComputer, MdDashboard, MdHomeFilled } from 'react-icons/md';
 import ProfileDropDown from './ProfileDropDown';
 import Image from 'next/image';
+import UserNavLink from './UserNavLink';
+import { PiUserBold } from 'react-icons/pi';
+import SignOutButton from '@/app/auth/signout';
 
-const MenuItems = () => (
-  <>
-    <NavItem href="/" label="Home" icon={MdHomeFilled} />
-    <NavItem href="/server" label="Server" icon={MdDashboard} />
-    <NavItem href="/client" label="Client" icon={MdComputer} />
-  </>
-);
 
 interface NavItemProps {
   href: string;
   label: string;
-  icon: React.ElementType; 
+  icon: React.ElementType;
 }
 
-const NavItem: React.FC<NavItemProps> = ({ href, label, icon: Icon }) => (
-  <Link href={href} passHref>
-    <Icon className="inline" size={20} /> <span className='sm:hidden lg:inline-block'>{label}</span>
-  </Link>
-);
+
 
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
-  const navStyle = 'sticky top-0 transition-all duration-300 dark:text-white backdrop-filter backdrop-blur-lg bg-opacity-50 border-b-[1px] border-slate-500 border-opacity-50 py-4 px-4';
-  const menuStyle = 'flex items-baseline space-x-4 gap-4 font-medium text-slate-300';
-  const mobileMenuStyle = `${isMobileMenuOpen ? 'opacity-100 translate-x-0 bg-slate-800 w-full' : 'opacity-0 translate-x-[-100%]'} md:hidden absolute top-16 transform transition-all duration-400 ease-in-out z-0`;
+  const navStyle = `sticky top-0 transition-all duration-300 dark:text-white backdrop-filter backdrop-blur-lg bg-opacity-50 border-b-[1px] border-slate-500 border-opacity-50 py-4 px-4`;
+  const menuStyle = `flex items-baseline space-x-4 gap-4 font-medium text-slate-300 ${isMobileMenuOpen ? '' : ''}`;
+  const mobileMenuStyle = `${isMobileMenuOpen ? 'opacity-100 translate-x-0 bg-slate-800 w-auto' : 'opacity-0 translate-x-[-100%]'} left-0 top-0 h-screen absolute transform transition-all duration-400 ease-in-out z-0`;
+
+  
+  const MenuItems = () => (
+    <>
+      <NavItem href="/" label="Home" icon={MdHomeFilled} />
+      <NavItem href="/server" label="Server" icon={MdDashboard} />
+      <NavItem href="/client" label="Client" icon={MdComputer} />
+    </>
+  );
+
+  const NavItem: React.FC<NavItemProps> = ({ href, label, icon: Icon }) => (
+    <div>
+      <Link href={href} passHref>
+        <Icon className={`inline  ${isMobileMenuOpen ? 'mr-4' : ''}`} size={20} /> <span className='md:hidden lg:inline-block'>{label}</span>
+      </Link>
+    </div>
+  );
+
 
   return (
     <nav className={navStyle}>
@@ -56,8 +66,22 @@ const Navbar: React.FC = () => {
         </div>
       </div>
       <div className={mobileMenuStyle}>
-        <div className="pt-3 pb-4 px-5 space-y-6 flex-block">
+        <div className="px-5 pt-2 space-y-6 flex-block">
+          <div className="border-b-[1px] border-slate-500">
+            <Link href="/" className={`transition-all duration-300 text-4xl font-bold border-b-[1px] border-slate-500`}>
+              <Image className='my-4 invert mx-auto' src="/next.svg" width={150} height={80} alt="logo" />
+            </Link>
+          </div>
+          <UserNavLink />
+            <div className=''>
+              <Link className="mr-2" href={`/profiles/`}>
+                <PiUserBold size={20} className="inline mr-4" /> My Account
+              </Link>
+            </div>
           <MenuItems />
+          <div>
+            <SignOutButton />
+          </div>
         </div>
       </div>
     </nav>
