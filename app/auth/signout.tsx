@@ -10,9 +10,10 @@ const SignOutButton = () => {
   }
 
   return (
-    <Link href="#" onClick={() => signOut()}>
-      <VscSignOut className="inline" /> Signout
+    <Link className="mr-2" href="#" onClick={() => signOut()}>
+      <VscSignOut size={24} className="inline mr-4" /> Signout
     </Link>
+    
   );
 };
 
