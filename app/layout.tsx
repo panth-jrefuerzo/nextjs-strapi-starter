@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import AuthProvider from './context/AuthProvider'
 
 const inter = Inter({ subsets: ['latin'] })
+const layoutClasses = "dark:bg-zinc-900";
 
 export const metadata = {
   title: '',
@@ -17,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={layoutClasses}>
         <AuthProvider>
           <Navbar />
           <main className="flex justify-center items-start p-6 min-h-screen">
