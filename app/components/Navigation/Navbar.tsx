@@ -84,7 +84,7 @@ const Navbar: React.FC = () => {
       </nav>
       <div ref={mobileMenuRef} className={mobileMenuStyle}>
         <div className="px-5 pt-2 space-y-6 flex-block">
-          <div className="flex md:hidden absolute right-4 top-6">
+          <div className="flex absolute right-4 top-6">
             <button type="button" className={`z-40`} onClick={toggleMobileMenu}>
               <span className="sr-only">Open sidebar</span>
               <MdClose className="inline" size={32} />
