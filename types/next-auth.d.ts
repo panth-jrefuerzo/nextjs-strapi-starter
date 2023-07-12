@@ -12,6 +12,7 @@ declare module "next-auth" {
       jwt: string;
       banstatus: boolean;
       group: string;
+      picture: string;
 
 
     } & DefaultSession["user"]
