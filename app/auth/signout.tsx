@@ -1,6 +1,6 @@
 import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
-import { VscSignOut } from 'react-icons/vsc';
+import { PiSignOut } from 'react-icons/pi';
 
 const SignOutButton = () => {
   const { data: session } = useSession();
@@ -11,7 +11,7 @@ const SignOutButton = () => {
 
   return (
     <Link className="mr-2" href="#" onClick={() => signOut()}>
-      <VscSignOut size={24} className="inline mr-4" /> Signout
+      <PiSignOut size={24} className="inline mr-4" /> Signout
     </Link>
     
   );
