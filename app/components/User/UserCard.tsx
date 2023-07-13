@@ -39,7 +39,7 @@ export default function Card({ user, pagetype }: Props) {
     ) : null
 
     return (
-        <section className="flex flex-col gap-4">
+        <section className="flex flex-col gap-4 dark:text-slate-300">
             {greeting}
             {/* {emailDisplay} */}
             {userImage}

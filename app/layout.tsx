@@ -2,6 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import Navbar from './components/Navigation/Navbar'
 import AuthProvider from './context/AuthProvider'
+import Footer from './components/Footer/Footer';
 
 const layoutClasses = "dark:bg-slate-900";
 
@@ -23,6 +24,7 @@ export default function RootLayout({
           <main className="flex justify-center items-start p-6 min-h-screen">
             {children}
           </main>
+          <Footer />
         </AuthProvider>
       </body>
     </html>
