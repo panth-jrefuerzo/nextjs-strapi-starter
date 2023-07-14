@@ -65,7 +65,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-12 container mx-auto container sm:px-4 lg:px-[8rem]">
           <div className="text-left pr-6 border-r-[1px] border-gray-700">
             <Link href="/" className={`transition-all duration-300 text-4xl font-bold `}>
-              <Image className='my-4 dark:invert' src="/vercel.svg" width={150} height={80} alt="logo" />
+              <Image className='my-4 dark:invert' src="/next.svg" width={150} height={80} alt="logo" />
             </Link>
           </div>
           <div className="flex md:hidden">
