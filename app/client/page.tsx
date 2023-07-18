@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation'
 import UserCard from '../components/User/UserCard'
 
 export default function ClientPage() {
-  const { data: session, status  } = useSession({
+  const { data: session  } = useSession({
     required: true,
     onUnauthenticated() {
       redirect('/api/auth/signin?callbackUrl=/client')
