@@ -13,3 +13,5 @@ GOOGLE_CLIENT_SECRET=GOCSPX-
 NEXTAUTH_SECRET=
 STRAPI_PUBLIC_API_URL=
 ```
+## Strapi Setup
+Make sure to setup google provider information.
