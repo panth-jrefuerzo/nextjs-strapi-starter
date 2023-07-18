@@ -1,16 +1,17 @@
 import React from 'react'
-import { useSession } from 'next-auth/react';
 import Image from 'next/image';
+import { User } from '@/types/user';
 
-function UserNavLink() {
-    const { data: session } = useSession();
-    const userFName = session?.user.name;
-    const userPhoto = session?.user.picture;
+type Props = {
+  user?: User
+}
 
-    if(!session){
-        return null
-    }
-    
+function UserNavLink({user}:Props) {
+  
+  const userFName = user?.name;
+  const userPhoto = user?.picture;
+  const userEmail = user?.email;
+
   return (
     <div className={`flex px-4 border-b-[1px] border-slate-500 pb-4 mb-4`}>
     <Image
@@ -22,7 +23,7 @@ function UserNavLink() {
     />
     <div className="">
         <span className="text-xl block font-semibold">{userFName}</span>
-        <span className="text-sm block font-semibold">{session?.user.email}</span>
+        <span className="text-sm block font-semibold">{userEmail}</span>
     </div>
 </div>
   )

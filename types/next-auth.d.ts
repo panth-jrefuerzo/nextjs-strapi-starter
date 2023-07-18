@@ -13,8 +13,6 @@ declare module "next-auth" {
       banstatus: boolean;
       group: string;
       picture: string;
-
-
     } & DefaultSession["user"]
   }
 }
