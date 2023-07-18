@@ -20,10 +20,8 @@ export const options: NextAuthOptions = {
     maxAge: 86400 // 24 Hours
   },
   callbacks: {
-    async session({ user, session, token }) {
-      session.user = token as any;
-      /* @ts-ignore */
-      session.user.id = user ? user.id : null;
+    async session({ session, token }) {
+      session.user = token;
       return Promise.resolve(session);
     },
 
@@ -49,3 +47,4 @@ export const options: NextAuthOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET as string,
 };
+

@@ -12,6 +12,10 @@ function UserNavLink({user}:Props) {
   const userPhoto = user?.picture;
   const userEmail = user?.email;
 
+  if(!user){
+    return null
+  }
+  
   return (
     <div className={`flex px-4 border-b-[1px] border-slate-500 pb-4 mb-4`}>
     <Image

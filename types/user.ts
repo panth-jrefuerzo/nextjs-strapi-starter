@@ -3,4 +3,5 @@ export interface User{
     email?: string | null | undefined;
     image?: string | null | undefined;
     picture?: string | null | undefined;
+    id?: string | null | undefined;
 }

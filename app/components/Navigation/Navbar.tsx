@@ -14,12 +14,6 @@ import SignOutButton from '@/app/auth/signout';
 import { useSession } from 'next-auth/react';
 import ThemeButton from '../Theme/ThemeButton';
 
-interface NavItemProps {
-  href: string;
-  label: string;
-  icon: React.ElementType;
-}
-
 const Navbar = () => {
   const { data: session,status } = useSession();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -79,7 +73,7 @@ const Navbar = () => {
               <ThemeButton />
 
               {/** Pass session data component */}
-              <ProfileDropDown user={session?.user} status={status}/>
+              <ProfileDropDown user={session?.user}/>
             </div>
           </div>
         </div>
@@ -100,11 +94,11 @@ const Navbar = () => {
           </div>
           {/** Pass session data component */}
           <UserNavLink user={session?.user}/>
-          <div className=''>
-            <Link className="mr-2" href={`/profiles/`}>
+          {session ? <div className=''>
+            <Link className="mr-2" href={`/profiles?user=${session?.user?.id}`}>
               <PiUserBold size={20} className="inline mr-4" /> My Account
             </Link>
-          </div>
+          </div> : null}
           <MenuItems />
           <div>
             <SignOutButton />
