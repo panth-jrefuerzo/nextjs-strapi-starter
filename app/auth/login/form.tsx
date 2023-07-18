@@ -25,13 +25,6 @@ export const LoginForm = () => {
         <FcGoogle size={36} className="mr-4" />
         Continue with Google
       </button>
-
-      {/* Button for signing in with Discord */}
-      <button className={buttonStyle} onClick={() => handleSignIn("discord")}>
-        <LiaDiscord size={36} className="mr-4" />
-        Continue with Discord
-      </button>
-
     </div>
   );
 };
