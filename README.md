@@ -1,4 +1,8 @@
-# NextJS version 13.4.10
+# NextJS Strapi Starter with Next-auth.js
+
+## Versions
+* next.js 13.4.10
+* next-auth 4.22.1
 ## Installation
 Git clone the repo
 run `npm install` & `npm run dev`
