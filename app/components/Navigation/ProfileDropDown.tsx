@@ -19,7 +19,7 @@ function ProfileDropDown({user, status}:Props) {
     const [isDropDownOpen, setIsDropDownOpen] = useState(false);
     const toggleDropDown = () => setIsDropDownOpen(!isDropDownOpen);
 
-    const dropDownStyle = `${isDropDownOpen ? 'opacity-100 ' : 'opacity-0 translate-y-[-300px]'} bg-slate-800 transition-all duration-400 ease-in-out rounded-2xl dropdown-menu text-gray-300 absolute z-10 w-screen max-w-[260px] sm:right-[1rem] mt-[1rem]
+    const dropDownStyle = `${isDropDownOpen ? 'opacity-100 ' : 'opacity-0 translate-y-[-300px]'} dark:bg-slate-800 bg-slate-100 transition-all duration-400 ease-in-out rounded-2xl dropdown-menu  absolute z-10 w-screen max-w-[260px] sm:right-[1rem] mt-[1rem]
    `;
 
     {/* Use Effect to be able to close dropdown with outside click */}
@@ -54,7 +54,7 @@ function ProfileDropDown({user, status}:Props) {
                     </button>
                     <div className={`${dropDownStyle} mr-2 px-2 py-4`}>
                         <UserNavLink user={user}/>
-                        <div className='text-neutral-500 dark:text-neutral-300 px-4 space-y-4'>
+                        <div className='dark:text-slate-300 px-4 space-y-4'>
                             <div className=''>
                                 <Link className="mr-2" href={`/profiles/${userFName}`}>
                                     <PiUserBold size={24} className="inline mr-4" /> My Account

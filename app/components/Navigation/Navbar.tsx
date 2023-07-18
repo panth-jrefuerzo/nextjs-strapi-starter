@@ -12,6 +12,7 @@ import UserNavLink from './UserNavLink';
 import SignOutButton from '@/app/auth/signout';
 
 import { useSession } from 'next-auth/react';
+import ThemeButton from '../Theme/ThemeButton';
 
 interface NavItemProps {
   href: string;
@@ -75,6 +76,8 @@ const Navbar = () => {
           <div className="hidden md:flex items-center">
             <div className={menuStyle}>
               <MenuItems />
+              <ThemeButton />
+
               {/** Pass session data component */}
               <ProfileDropDown user={session?.user} status={status}/>
             </div>
