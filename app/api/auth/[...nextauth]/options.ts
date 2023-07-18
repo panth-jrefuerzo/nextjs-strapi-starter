@@ -1,6 +1,5 @@
 import type { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import DiscordProvider from "next-auth/providers/discord";
 
 export const options: NextAuthOptions = {
   providers: [
@@ -42,7 +41,7 @@ export const options: NextAuthOptions = {
           token.jwt = data.jwt;
           token.id = data.user.id;
           token.group = data.user.group;
-
+          token.test = "custom";
         } catch (error) {
           console.error("Fetch failed:", error);
         }
