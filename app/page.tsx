@@ -1,4 +1,4 @@
-import PostList from "./content/home/postList"
+import PostList from "@/app/components/content/home/postList"
 
 export default async function Home() {
 
@@ -6,9 +6,11 @@ export default async function Home() {
     <>   
       <div className="container mx-auto">
         <div className="text-center">
-        <h1 className="text-3xl font-bold mb-4">Next.js Strapi Starter with Auth</h1>
+        <h1 className="text-5xl font-bold my-8">Next.js Strapi Starter with Auth</h1>
         </div>
-        <PostList endPoint="nextstrapis" pageSize={2}/>
+        <div className="lg:px-[8rem] py-8">
+          <PostList endPoint="nextstrapis" pageSize={2}/>
+        </div>
       </div>
     </>
   )
