@@ -12,6 +12,8 @@ GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=GOCSPX-
 NEXTAUTH_SECRET=
 STRAPI_PUBLIC_API_URL=
+IMAGE_DOMAIN=
 ```
 ## Strapi Setup
-Make sure to setup google provider information.
+* Make sure to setup google provider information.
+* Refer to `types/` to see the default fields you must use. 
