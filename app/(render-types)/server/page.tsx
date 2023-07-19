@@ -1,6 +1,6 @@
-import { options } from "../api/auth/[...nextauth]/options"
+import { options } from "@/app/api/auth/[...nextauth]/options"
 import { getServerSession } from "next-auth/next"
-import UserCard from "../components/User/UserCard"
+import UserCard from "@/app/components/User/UserCard"
 import { redirect } from "next/navigation"
 
 export default async function ServerPage() {

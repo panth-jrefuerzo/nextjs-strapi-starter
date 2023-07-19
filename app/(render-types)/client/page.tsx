@@ -3,7 +3,7 @@
 // client components to useSession
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
-import UserCard from '../components/User/UserCard'
+import UserCard from '@/app/components/User/UserCard'
 
 export default function ClientPage() {
   const { data: session  } = useSession({
