@@ -1,5 +1,6 @@
 import { Post } from '@/types/posts';
 import Image from 'next/image';
+import { redirect } from 'next/navigation'
 
 interface PostListProps {
     params: {
@@ -17,6 +18,11 @@ const PostSlug = async ({ params }:PostListProps) => {
     const slug = params.slug
 
     const postData = await getPost(slug);
+
+    if (!postData.data[0]) {
+        redirect('/not-found')
+    }
+      
     const post: Post = postData.data[0]; // Assuming there is only one post with the given slug
 
     return (
