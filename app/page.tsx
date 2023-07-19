@@ -1,16 +1,15 @@
-import { options } from "./api/auth/[...nextauth]/options"
-import { getServerSession } from "next-auth/next"
-import UserCard from "./components/User/UserCard"
+import PostList from "./content/home/postList"
 
 export default async function Home() {
-  const session = await getServerSession(options)
+
   return (
-    <>
-      {session ? (
-        <UserCard user={session?.user} pagetype={"Home"} />
-      ) : (
-        <h1 className="text-5xl dark:text-slate-300">You Shall Not Pass!</h1>
-      )}
+    <>   
+      <div className="container mx-auto">
+        <div className="text-center">
+        <h1 className="text-3xl font-bold mb-4">Next.js Strapi Starter with Auth</h1>
+        </div>
+        <PostList endPoint="nextstrapis" pageSize={2}/>
+      </div>
     </>
   )
 }
