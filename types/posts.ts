@@ -4,6 +4,7 @@ export interface Post {
         Title: string;
         Body: string;
         Slug: string;
+        FeaturedImage: any;
         // Add other fields as needed
     };
 }
