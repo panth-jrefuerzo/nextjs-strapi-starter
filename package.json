@@ -1,7 +1,10 @@
 {
-  "name": "nextjs-starter-with-auth",
-  "version": "0.1.0",
+  "name": "nextjs-strapi-starter-with-auth",
+  "version": "1.0.0",
   "private": true,
+  "author": "Joseph Lariosa",
+  "email": "dev@jahz.xyz",
+  "url": "https://jahz.xyz",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
