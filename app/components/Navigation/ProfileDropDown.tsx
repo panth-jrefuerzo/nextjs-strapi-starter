@@ -57,7 +57,7 @@ function ProfileDropDown({ user }: Props) {
                     <UserNavLink user={user} />
                     <div className='dark:text-slate-300 px-4 space-y-4'>
                         <div>
-                            <Link className="mr-2" href={`/profiles?user=${userId}`}>
+                            <Link className="mr-2" href={`/my-account?user=${userId}`}>
                                 <PiUserBold size={24} className="inline mr-4" /> My Account
                             </Link>
                         </div>
