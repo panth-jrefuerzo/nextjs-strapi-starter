@@ -8,8 +8,8 @@ import Providers from './context/ThemeProvider';
 const layoutClasses = "dark:bg-slate-900";
 
 export const metadata = {
-  title: '',
-  description: '',
+  title: 'NextJS Strapi Starter with Auth',
+  description: 'A powerful, all-in-one boilerplate to kickstart your web development journey',
 }
 
 export default function RootLayout({
