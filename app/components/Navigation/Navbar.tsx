@@ -13,6 +13,7 @@ import SignOutButton from '@/app/auth/signout';
 
 import { useSession } from 'next-auth/react';
 import ThemeButton from '../Theme/ThemeButton';
+import GitHubFork from '../GitHubFork';
 
 const Navbar = () => {
   const { data: session,status } = useSession();
@@ -70,6 +71,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center">
             <div className={menuStyle}>
               <MenuItems />
+              <GitHubFork url='https://github.com/jahzlariosa/nextjs-strapi-starter/fork' />
               <ThemeButton />
 
               {/** Pass session data component */}
