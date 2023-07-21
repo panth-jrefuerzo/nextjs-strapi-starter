@@ -1,7 +1,5 @@
-"use client"
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
 import { Post } from '@/types/posts';
 
 interface PostListProps {
@@ -10,23 +8,16 @@ interface PostListProps {
 }
 
 const fetchData = async (url: string): Promise<{ data: Post[] }> => {
-  const response = await fetch(url);
+  const response = await fetch(url,{ next: { revalidate: 10 } });
   const data = await response.json();
   return data;
 };
 
-const PostList = ({ endPoint, pageSize }:PostListProps) => {
-  const [data, setData] = useState<Post[] | null>(null);
+const PostList = async ({ endPoint, pageSize }: PostListProps) => {
 
-  useEffect(() => {
-    const fetchStrapiData = async () => {
-      const url = `${process.env.STRAPI_PUBLIC_API_URL}/api/${endPoint}?pagination[pageSize]=${pageSize}&populate=FeaturedImage`;
-      const fetchedData = await fetchData(url);
-      setData(fetchedData.data);
-    };
-
-    fetchStrapiData();
-  }, [endPoint, pageSize]);
+  const url = `${process.env.STRAPI_PUBLIC_API_URL}/api/${endPoint}?pagination[pageSize]=${pageSize}&populate=FeaturedImage`;
+  const postData = await fetchData(url);
+  const { data } = postData; 
 
   if (!data) {
     return <p>Loading data...</p>;
@@ -46,8 +37,8 @@ const PostList = ({ endPoint, pageSize }:PostListProps) => {
                 className='mx-auto mb-4'
               />
             </>
-          ) : null }
-          <h1 className='text-2xl font-medium mb-4'>{post.attributes.Title}</h1>
+          ) : null}
+            <h1 className='text-2xl font-medium mb-4'>{post.attributes.Title}</h1>
           </Link>
           <p>{post.attributes.Body}</p>
         </div>
